@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@apiverve/vindecoder": "^1.1.5",
     "@radix-ui/react-icons": "^1.3.0",
     "@radix-ui/react-label": "^2.1.0",
     "@tensorflow/tfjs": "^4.22.0",
@@ -24,16 +23,11 @@
     "next": "15.0.2",
     "next-auth": "^5.0.0-beta.25",
     "ocr-space-api": "^1.0.1",
-    "ocr-space-api-wrapper": "^2.3.2",
     "react": "19.0.0-rc-02c0e824-20241028",
     "react-dom": "19.0.0-rc-02c0e824-20241028",
     "sass": "^1.80.5",
     "tailwind-merge": "^2.5.4",
-    "tailwindcss-animate": "^1.0.7",
-    "tesseract.js": "^5.1.1",
-    "universal-vin-decoder": "^1.0.0",
-    "vin-decode": "^0.2.0",
-    "vindec": "^2.8.0"
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "eslint": "^8",
