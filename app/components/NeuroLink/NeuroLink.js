@@ -1,6 +1,5 @@
 'use client'
 import React, { useEffect, useState } from 'react';
-import * as Tesseract from 'tesseract.js'
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
@@ -106,6 +105,7 @@ export default function NeuroLink() {
             setError('Произошла ошибка');
         }
     };
+    
   
     useEffect(()=>{
         console.log("LOGI", result)
@@ -129,34 +129,12 @@ export default function NeuroLink() {
         }));
       }
 
-    const inputText = `
-Регистрационный знак B276BA150
-Идентификационный номер (VIN)
-УЗМ54323070029117
-Марка, модель
-МАЗ 54323-032
-Тип ТС
-MAZ 54323-032
-Категория
-ТАРС (АСЬ, прицену»
-C
-Год выпуска ТС 2000
-Шасси Nº Y3M54323070029117
-Кузов Nº КАБ. 13697
-Цвет СЕРЫЙ
-Мощность двигателя, кВт/л. с. 243,00
-Экологический класс
-Нет данных
-Паспорт ТС серия50НУ N959655
-Разрешенная тах масса, kq 16500
-Масса без нагрузки, kg 6000
-`;
 const [vehicleInfo, setVehicleInfo] = useState('')
 function parseVehicleInfo(text) {
     const result = {};
 
     result.VIN = text.match(/\b[A-Z0-9]{17}\b/i)?.[0] || '';
-    result['plate'] = text.match(/([A-Z]{1}\d{3}[A-Z]{2}\d{2,3})/i)?.[0] || '';
+    result['plate'] = text.match(/(\d{4}[A-Z]{2}\d{2,3})/i)?.[0] || '';
     result['mark'] = text.match(/Марка,\s*модель\s*:\s*([А-ЯA-Z\s\d-]+)/i)?.[1]?.replace(/\s+/g, ' ').trim() || '';
     if (!result['mark']) {
         result['mark'] = text.match(/Марка\s*модель\s*:\s*([А-ЯA-Z\s\d-]+)/i)?.[1]?.replace(/\s+/g, ' ').trim() || '';
@@ -176,8 +154,8 @@ function parseVehicleInfo(text) {
 }
 
 useEffect(()=>{
-    setVehicleInfo(parseVehicleInfo(inputText))
-}, [inputText])
+    setVehicleInfo(parseVehicleInfo(result))
+}, [result])
 
 useEffect(()=>{
     console.log(vehicleInfo)
@@ -301,7 +279,7 @@ useEffect(()=>{
                                         <div className='flex'>
                                             <div className='partnumber-block_item'>
                                                 <Label htmlFor='stsPart'>Серия</Label>
-                                                <Input type="number" required id='stsPart' value={vehicleInfoCard.stsNumber} onChange={handleInputChange}/>
+                                                <Input type="" required id='stsPart' value={vehicleInfoCard.stsNumber} onChange={handleInputChange}/>
                                             </div>
                                             <div className='partnumber-block_item'>
                                                 <Label htmlFor='stsNum'>Номер</Label>
